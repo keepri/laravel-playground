@@ -1,7 +1,17 @@
 <?php
 
-test('returns a successful response', function () {
-    $response = $this->get('/');
+namespace Tests\Unit;
 
-    $response->assertStatus(200);
-});
+use Tests\TestCase;
+
+class ExampleTest extends TestCase
+{
+    /**
+     * A basic test example.
+     */
+    public function test_basic_test(): void
+    {
+        $this->get('/')
+            ->assertStatus(200);
+    }
+}
