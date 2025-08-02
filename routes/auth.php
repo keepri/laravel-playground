@@ -4,7 +4,8 @@ use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Livewire\Actions\Logout;
 use Illuminate\Support\Facades\Route;
 
-Route::middleware('guest')->group(function () {});
+Route::middleware('guest')->group(function () {
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('verify-email/{id}/{hash}', VerifyEmailController::class)
