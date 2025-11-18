@@ -33,9 +33,11 @@ down: ## Stop containers
 	docker-compose down
 
 build: ## Build containers
+	docker-compose down -v
 	docker-compose build
 
 rebuild: ## Rebuild and start containers
+	docker-compose down -v
 	docker-compose up -d --build
 
 restart: ## Restart containers

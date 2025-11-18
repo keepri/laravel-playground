@@ -26,17 +26,27 @@ RUN bun install --frozen-lockfile || bun install
 
 COPY . .
 
-RUN composer dump-autoload --optimize && \
-    php artisan config:cache && \
-    php artisan route:cache && \
-    php artisan view:cache
+ARG NODE_ENV=production
 
-RUN bun run build
+RUN if [ "$NODE_ENV" = "production" ]; then \
+        composer dump-autoload --optimize && \
+        php artisan config:cache && \
+        php artisan route:cache && \
+        php artisan view:cache && \
+        bun run build; \
+    else \
+        composer dump-autoload; \
+    fi
 
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 
 ARG APP_PORT=8000
+
 EXPOSE ${APP_PORT}
 
 CMD php artisan migrate --force && \
-    php artisan serve --host=0.0.0.0 --port=${APP_PORT}
+    if [ "$NODE_ENV" = "development" ]; then \
+        exec bun concurrently "php artisan serve --host=0.0.0.0 --port=${APP_PORT}" "bun dev --host 0.0.0.0"; \
+    else \
+        exec php artisan serve --host=0.0.0.0 --port=${APP_PORT}; \
+    fi

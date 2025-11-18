@@ -3,12 +3,16 @@ services:
     build:
       context: .
       args:
-        APP_PORT: ${APP_PORT:-8000}
+        APP_PORT: ${APP_PORT}
+        NODE_ENV: ${NODE_ENV}
     ports:
-      - "${APP_PORT:-8000}:${APP_PORT:-8000}"
+      - "${APP_PORT}:${APP_PORT}"
+      - "${VITE_PORT}:${VITE_PORT}"
     volumes:
       - .:/var/www/html
-      - /var/www/html/vendor
+      - vendor_cache:/var/www/html/vendor
+      - node_modules_cache:/var/www/html/node_modules
+      - build_assets:/var/www/html/public/build
     env_file:
       - .env
     depends_on:
@@ -27,3 +31,8 @@ services:
     env_file:
       - .env
     restart: unless-stopped
+
+volumes:
+  vendor_cache:
+  node_modules_cache:
+  build_assets:

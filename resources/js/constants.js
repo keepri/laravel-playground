@@ -1,6 +1,6 @@
 import { Counter } from "./components/Counter";
 
-export const COMPONENTS = {
+export const JSX = {
     Counter,
 };
 

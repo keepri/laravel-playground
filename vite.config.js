@@ -9,14 +9,16 @@ export default defineConfig({
             input: ['resources/css/app.css', 'resources/js/app.jsx'],
             refresh: true,
         }),
-        solid({
-            ssr: false,
-            hydrate: true,
-        }),
+        solid(),
         tailwindcss(),
     ],
     server: {
+        host: '0.0.0.0',
+        port: Number(process.env.VITE_PORT) ?? 5173,
         cors: true,
+        hmr: {
+            host: 'localhost'
+        }
     },
     appType: 'mpa',
 });
