@@ -13,11 +13,6 @@ class Welcome extends Component
 {
     public int $initial = 0;
 
-    public function mount(int $initial = 8): void
-    {
-        $this->initial = $initial;
-    }
-
     public function render(): View
     {
         return view('livewire.pages.welcome');
