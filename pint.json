@@ -15,11 +15,7 @@
         },
         "no_unused_imports": true,
         "ordered_imports": {
-            "imports_order": [
-                "class",
-                "function",
-                "const"
-            ],
+            "imports_order": ["class", "function", "const"],
             "sort_algorithm": "alpha"
         },
         "no_extra_blank_lines": {
@@ -56,18 +52,11 @@
             "after_heredoc": false
         },
         "single_space_around_construct": {
-            "constructs_contain_a_single_space": [
-                "yield_from"
-            ]
+            "constructs_contain_a_single_space": ["yield_from"]
         },
         "trailing_comma_in_multiline": {
             "after_heredoc": true,
-            "elements": [
-                "arguments",
-                "arrays",
-                "match",
-                "parameters"
-            ]
+            "elements": ["arguments", "arrays", "match", "parameters"]
         },
         "trim_array_spaces": true,
         "whitespace_after_comma_in_array": {
