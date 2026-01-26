@@ -10,3 +10,4 @@
         @livewireScripts
     </body>
 </html>
+

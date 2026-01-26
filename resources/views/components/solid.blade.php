@@ -1,12 +1,11 @@
 @props([
     'fragment' => false,
     'name' => '',
-    'props' => '{}'
+    'props' => '{}',
 ])
 
 <div
-    @if($fragment) style="display: contents;" @endif
+    @if ($fragment) style="display: contents;" @endif
     solid-component="{{ $name }}"
-    solid-props="{{ $props }}"
-    {{ $attributes }}
+    solid-props="{{ $props }}" {{ $attributes }}
 ></div>

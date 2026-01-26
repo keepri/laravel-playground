@@ -10,19 +10,12 @@
         "array_syntax": {
             "syntax": "short"
         },
-        "trailing_comma_in_multiline": {
-            "after_heredoc": true
-        },
         "concat_space": {
             "spacing": "one"
         },
         "no_unused_imports": true,
         "ordered_imports": {
-            "imports_order": [
-                "class",
-                "function",
-                "const"
-            ],
+            "imports_order": ["class", "function", "const"],
             "sort_algorithm": "alpha"
         },
         "no_extra_blank_lines": {
@@ -39,7 +32,85 @@
         "blank_line_after_namespace": true,
         "blank_line_after_opening_tag": true,
         "no_leading_import_slash": true,
-        "no_blank_lines_after_class_opening": true
+        "no_blank_lines_after_class_opening": true,
+        "array_indentation": true,
+        "function_declaration": {
+            "closure_fn_spacing": "none",
+            "closure_function_spacing": "one",
+            "trailing_comma_single_line": false
+        },
+        "method_chaining_indentation": true,
+        "no_trailing_comma_in_singleline": {
+            "elements": [
+                "arguments",
+                "array_destructuring",
+                "array",
+                "group_import"
+            ]
+        },
+        "no_whitespace_before_comma_in_array": {
+            "after_heredoc": false
+        },
+        "single_space_around_construct": {
+            "constructs_contain_a_single_space": ["yield_from"]
+        },
+        "trailing_comma_in_multiline": {
+            "after_heredoc": true,
+            "elements": ["arguments", "arrays", "match", "parameters"]
+        },
+        "trim_array_spaces": true,
+        "whitespace_after_comma_in_array": {
+            "ensure_single_space": true
+        },
+
+        "array_push": true,
+        "backtick_to_shell_exec": true,
+        "date_time_immutable": true,
+        "declare_strict_types": true,
+        "lowercase_static_reference": true,
+        "fully_qualified_strict_types": true,
+        "global_namespace_import": {
+            "import_classes": true,
+            "import_constants": true,
+            "import_functions": true
+        },
+        "mb_str_functions": true,
+        "modernize_types_casting": true,
+        "no_superfluous_elseif": true,
+        "no_useless_else": true,
+        "no_multiple_statements_per_line": true,
+        "ordered_class_elements": {
+            "order": [
+                "use_trait",
+                "case",
+                "constant",
+                "constant_public",
+                "constant_protected",
+                "constant_private",
+                "property_public",
+                "property_protected",
+                "property_private",
+                "construct",
+                "destruct",
+                "magic",
+                "phpunit",
+                "method_abstract",
+                "method_public_static",
+                "method_public",
+                "method_protected_static",
+                "method_protected",
+                "method_private_static",
+                "method_private"
+            ],
+            "sort_algorithm": "none"
+        },
+        "ordered_interfaces": true,
+        "ordered_traits": true,
+        "protected_to_private": true,
+        "self_accessor": true,
+        "self_static_accessor": true,
+        "strict_comparison": true,
+        "visibility_required": true
     },
     "lines": {
         "max": 80

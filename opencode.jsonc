@@ -1,0 +1,16 @@
+{
+    "$schema": "https://opencode.ai/config.json",
+    "instructions": [
+        ".ai/guidelines/*.md"
+    ],
+    "mcp": {
+        "boost": {
+            "type": "local",
+            "command": [
+                "php",
+                "artisan",
+                "boost:mcp"
+            ]
+        }
+    }
+}

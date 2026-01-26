@@ -16,13 +16,18 @@
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^3.6",
+        "driftingly/rector-laravel": "^2.1",
         "fakerphp/faker": "^1.24",
+        "larastan/larastan": "^3.0",
+        "laravel/boost": "^1.8",
         "laravel/pail": "^1.2",
         "laravel/pint": "^1.24",
         "laravel/sail": "^1.44",
         "mockery/mockery": "^1.6",
         "nunomaduro/collision": "^8.8",
+        "pestphp/pest": "^4.3",
         "phpunit/phpunit": "^12.3",
+        "rector/rector": "^2.3",
         "sebastian/environment": "^8.0"
     },
     "autoload": {
@@ -38,6 +43,14 @@
         }
     },
     "scripts": {
+        "setup": [
+            "composer install",
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
+            "@php artisan key:generate",
+            "@php artisan migrate --force",
+            "npm install",
+            "npm run build"
+        ],
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi",
@@ -59,11 +72,23 @@
             "Composer\\Config::disableProcessTimeout",
             "npx concurrently -c \"#93c5fd,#c4b5fd,#fb7185,#fdba74\" \"php artisan serve\" \"php artisan queue:listen --tries=1\" \"php artisan pail --timeout=0\" \"npm run dev\" --names=server,queue,logs,vite --kill-others"
         ],
-        "format-test": [
-            "@php vendor/bin/pint --test"
+        "format:check": [
+            "@php vendor/bin/pint --test",
+            "npm run format:check"
         ],
         "format": [
-            "@php vendor/bin/pint"
+            "@php vendor/bin/pint",
+            "npm run format"
+        ],
+        "rector": [
+            "vendor/bin/rector",
+            "vendor/bin/pint"
+        ],
+        "analyse": [
+            "vendor/bin/phpstan analyse --memory-limit=2G"
+        ],
+        "ptest": [
+            "vendor/bin/pest --parallel"
         ],
         "test": [
             "@php artisan config:clear --ansi",
@@ -80,6 +105,7 @@
         "preferred-install": "dist",
         "sort-packages": true,
         "allow-plugins": {
+            "pestphp/pest-plugin": true,
             "php-http/discovery": true
         }
     },
