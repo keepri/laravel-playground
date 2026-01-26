@@ -7,7 +7,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Override;
 
-class AppServiceProvider extends ServiceProvider
+class AppService extends ServiceProvider
 {
     /**
      * Register any application services.
